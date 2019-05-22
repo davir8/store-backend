@@ -13,7 +13,7 @@ export const typeDefs = `
 
 export const resolvers = {
   queries: {
-    products: () => ProductLoader.loadAllProducts()
+    products: ProductLoader.loadAllProducts
   },
   mutations: {
     createProduct: ProductUpdater.createProduct

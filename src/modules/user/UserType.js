@@ -1,5 +1,4 @@
 import * as UserLoader from "./UserLoader";
-import * as UserUpdater from "./UserUpdater";
 
 export const typeDefs = `
   type User {
@@ -13,10 +12,6 @@ export const typeDefs = `
 
 export const resolvers = {
   queries: {
-    users: () => UserLoader.loadAllUsers(),
-    user: UserLoader.loadUserById
-  },
-  mutations: {
-    createUser: UserUpdater.createUser
+    users: () => UserLoader.loadAllUsers()
   }
 };
