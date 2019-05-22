@@ -9,10 +9,12 @@ const ProductSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  url: {
+    type: String
+  },
   owner: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-    required: true
+    ref: "User"
   },
   createdAt: {
     type: Date,

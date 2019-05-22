@@ -24,15 +24,21 @@ const SchemaDefinition = `
   }
   type Mutation {
     createUser(name: String!, email: String!, password: String!): User
-    createProduct(name: String!, description: String!, userId: ID!): Product
+    createProduct(name: String!, description: String!, url: String, userId: ID): Product
   }
 `;
 
 const typeDefs = [ProductType.typeDefs, UserType.typeDefs];
 
 const resolvers = {
-  ...ProductType.resolvers,
-  ...UserType.resolvers
+  Query: {
+    ...ProductType.resolvers.queries,
+    ...UserType.resolvers.queries
+  },
+  Mutation: {
+    ...ProductType.resolvers.mutations,
+    ...UserType.resolvers.mutations
+  }
 };
 
 const schema = makeExecutableSchema({

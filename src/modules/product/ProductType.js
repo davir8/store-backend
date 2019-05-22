@@ -5,16 +5,17 @@ export const typeDefs = `
   type Product {
     name: String!
     description: String!
-    owner: User!
+    url: String
+    owner: User
     createdAt: Date
   }
 `;
 
 export const resolvers = {
-  Query: {
+  queries: {
     products: () => ProductLoader.loadAllProducts()
   },
-  Mutation: {
+  mutations: {
     createProduct: ProductUpdater.createProduct
   }
 };
