@@ -13,5 +13,5 @@ export const loadAllProducts = async (root, args, { user }) => {
     query = {'name' : new RegExp(filter, 'i')}
   }
   
-  return await Product.find(query).populate("owner");
+  return await Product.find(query).populate("owner").sort({createdAt: -1});
 };
