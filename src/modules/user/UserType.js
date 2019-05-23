@@ -12,6 +12,6 @@ export const typeDefs = `
 
 export const resolvers = {
   queries: {
-    users: () => UserLoader.loadAllUsers()
+    users: UserLoader.loadAllUsers
   }
 };

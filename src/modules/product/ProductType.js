@@ -3,6 +3,7 @@ import * as ProductUpdater from "./ProductUpdater";
 
 export const typeDefs = `
   type Product {
+    id: ID!
     name: String!
     description: String!
     url: String

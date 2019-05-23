@@ -6,5 +6,12 @@ export const loadAllProducts = async (root, args, { user }) => {
     throw new Error("You are not authenticated!");
   }
 
-  return await Product.find().populate("owner");
+  const { filter } = args;
+  let query = {}
+  
+  if (filter) {
+    query = {'name' : new RegExp(filter, 'i')}
+  }
+  
+  return await Product.find(query).populate("owner");
 };
