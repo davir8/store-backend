@@ -3,7 +3,7 @@ import { makeExecutableSchema } from "graphql-tools";
 
 import * as ProductType from "./src/modules/product/ProductType";
 import * as UserType from "./src/modules/user/UserType";
-import * as AuthPayloadType from "./src/modules/auth/AuthPayloadType";
+import * as UserAuthenticatorType from "./src/modules/auth/UserAuthenticatorType";
 
 import mongoose from "mongoose";
 import jwt from "express-jwt";
@@ -27,6 +27,7 @@ const SchemaDefinition = `
     me: User
     users: [User]
     products(filter: String, page: Int, limit: Int): ProductPaginate
+    product(id: ID): Product
   }
   type Mutation {
     signup(name: String!, email: String!, password: String!): AuthPayload
@@ -36,19 +37,19 @@ const SchemaDefinition = `
 `;
 
 const typeDefs = [
-  AuthPayloadType.typeDefs,
+  UserAuthenticatorType.typeDefs,
   ProductType.typeDefs,
   UserType.typeDefs
 ];
 
 const resolvers = {
   Query: {
-    ...AuthPayloadType.resolvers.queries,
+    ...UserAuthenticatorType.resolvers.queries,
     ...ProductType.resolvers.queries,
     ...UserType.resolvers.queries
   },
   Mutation: {
-    ...AuthPayloadType.resolvers.mutations,
+    ...UserAuthenticatorType.resolvers.mutations,
     ...ProductType.resolvers.mutations,
     ...UserType.resolvers.mutations
   }

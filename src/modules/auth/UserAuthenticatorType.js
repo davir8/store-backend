@@ -1,4 +1,5 @@
 import * as UserAuthenticator from "./UserAuthenticator";
+import * as UserLoader from "../user/UserLoader";
 
 export const typeDefs = `
   type AuthPayload {
@@ -9,7 +10,7 @@ export const typeDefs = `
 
 export const resolvers = {
   queries: {
-    me: UserAuthenticator.me
+    me: UserLoader.me
   },
   mutations: {
     signup: UserAuthenticator.signup,

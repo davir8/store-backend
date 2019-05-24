@@ -7,3 +7,13 @@ export const loadAllUsers = (root, args, { user }) => {
   }
   return User.find();
 };
+
+export const me = async (root, args, { user }) => {
+  // make sure user is logged in
+  if (!user) {
+    throw new Error("You are not authenticated!");
+  }
+
+  // user is authenticated
+  return await User.findById(user.id);
+};

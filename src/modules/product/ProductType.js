@@ -21,7 +21,8 @@ export const typeDefs = `
 
 export const resolvers = {
   queries: {
-    products: ProductLoader.loadAllProducts
+    products: ProductLoader.loadAllProducts,
+    product: ProductLoader.loadProduct
   },
   mutations: {
     createProduct: ProductCreator.createProduct

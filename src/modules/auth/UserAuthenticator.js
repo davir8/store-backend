@@ -3,16 +3,6 @@ import bcrypt from "bcryptjs";
 import jsonwebtoken from "jsonwebtoken";
 require("dotenv").config();
 
-export const me = async (root, args, { user }) => {
-  // make sure user is logged in
-  if (!user) {
-    throw new Error("You are not authenticated!");
-  }
-
-  // user is authenticated
-  return await User.findById(user.id);
-};
-
 export const login = async (root, { email, password }, context) => {
   const user = await User.findOne({ email });
 
