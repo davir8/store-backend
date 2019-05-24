@@ -10,6 +10,13 @@ export const typeDefs = `
     owner: User
     createdAt: Date
   }
+  type ProductPaginate {
+    docs: [Product]
+    total: Int
+    limit: Int
+    page: Int
+    pages: Int
+  }
 `;
 
 export const resolvers = {

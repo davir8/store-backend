@@ -26,7 +26,7 @@ const SchemaDefinition = `
   type Query {
     me: User
     users: [User]
-    products(filter: String): [Product]
+    products(filter: String, page: Int, limit: Int): ProductPaginate
   }
   type Mutation {
     signup(name: String!, email: String!, password: String!): AuthPayload
