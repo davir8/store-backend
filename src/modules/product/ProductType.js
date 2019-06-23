@@ -1,5 +1,4 @@
 import * as ProductLoader from "./ProductLoader";
-import * as ProductCreator from "./ProductCreator";
 
 export const typeDefs = `
   type Product {
@@ -25,6 +24,6 @@ export const resolvers = {
     product: ProductLoader.loadProduct
   },
   mutations: {
-    createProduct: ProductCreator.createProduct
+    createProduct: ProductLoader.createProduct
   }
 };

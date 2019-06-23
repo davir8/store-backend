@@ -3,7 +3,6 @@ import { makeExecutableSchema } from "graphql-tools";
 
 import * as ProductType from "./src/modules/product/ProductType";
 import * as UserType from "./src/modules/user/UserType";
-import * as UserAuthenticatorType from "./src/modules/auth/UserAuthenticatorType";
 
 import mongoose from "mongoose";
 import jwt from "express-jwt";
@@ -36,20 +35,14 @@ const SchemaDefinition = `
   }
 `;
 
-const typeDefs = [
-  UserAuthenticatorType.typeDefs,
-  ProductType.typeDefs,
-  UserType.typeDefs
-];
+const typeDefs = [ProductType.typeDefs, UserType.typeDefs];
 
 const resolvers = {
   Query: {
-    ...UserAuthenticatorType.resolvers.queries,
     ...ProductType.resolvers.queries,
     ...UserType.resolvers.queries
   },
   Mutation: {
-    ...UserAuthenticatorType.resolvers.mutations,
     ...ProductType.resolvers.mutations,
     ...UserType.resolvers.mutations
   }

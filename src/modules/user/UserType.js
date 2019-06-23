@@ -8,10 +8,19 @@ export const typeDefs = `
     password: String!
     createdAt: Date
   }
+  type AuthPayload {
+    token: String
+    user: User
+  }
 `;
 
 export const resolvers = {
   queries: {
-    users: UserLoader.loadAllUsers
+    users: UserLoader.loadAllUsers,
+    me: UserLoader.me
+  },
+  mutations: {
+    signup: UserLoader.signup,
+    login: UserLoader.login
   }
 };
