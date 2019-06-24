@@ -19,12 +19,46 @@ This project was developed using nodejs, mongodb and graphql to add, list and se
 if all went well, the project will be available at: http://localhost:4000/graphq
 
 
-## Functionalities
+## Endpoints
 
-* User authentication
-* Product creation
-* Product listing with infinite scroll
-* Product details
+### Queries
+* `me: User`
+* `users: [User]`
+* `
+products(
+filter: String
+page: Int
+limit: Int
+): ProductPaginate
+`
+* `
+product(
+id: ID
+): Product
+`
+
+### Mutations
+* `
+signup(
+name: String!
+email: String!
+password: String!
+): AuthPayload
+`
+* `
+login(
+email: String!
+password: String!
+): AuthPayload
+`
+* `
+createProduct(
+name: String!
+description: String!
+url: String
+userId: ID
+): Product
+`
 
 
 ## License
